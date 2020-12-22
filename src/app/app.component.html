@@ -1,0 +1,164 @@
+<h1>Pipes <small>Angular</small></h1>
+<hr />
+<div class="row">
+  <div class="col">
+    <table class="table">
+      <thead class="thead-dark">
+        <th>Variable</th>
+        <th>Pipe</th>
+        <th>Output</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ name }}</td>
+          <td>uppercase</td>
+          <td>{{ name | uppercase }}</td>
+        </tr>
+        <tr>
+          <td>{{ name }}</td>
+          <td>lowercase</td>
+          <td>{{ name | lowercase }}</td>
+        </tr>
+        <tr>
+          <td>{{ name }}</td>
+          <td>slice:3</td>
+          <td>{{ name | slice:3 }}</td>
+        </tr>
+        <tr>
+          <td>{{ name }}</td>
+          <td>slice:0:3</td>
+          <td>{{ name | slice:0:3 }}</td>
+        </tr>
+        <tr>
+          <td>{{ numbers }}</td>
+          <td>slice:0:3</td>
+          <td>{{ numbers | slice:0:3 }}</td>
+        </tr>
+        <tr>
+          <td>{{ pi }}</td>
+          <td>number:'3.0-0'</td>
+          <td>{{ pi | number:'3.0-0'}}</td>
+        </tr>
+        <tr>
+          <td>{{ pi }}</td>
+          <td>number:'.0-2</td>
+          <td>{{ pi | number:'.0-2'}}</td>
+        </tr>
+        <tr>
+          <td>{{ percent }}</td>
+          <td>percent</td>
+          <td>{{ percent | percent}}</td>
+        </tr>
+        <tr>
+          <td>{{ percent }}</td>
+          <td>percent:'2.2-2'</td>
+          <td>{{ percent | percent:'2.2-2'}}</td>
+        </tr>
+        <tr>
+          <td>{{ rate }}</td>
+          <td>currency</td>
+          <td>{{ rate | currency}}</td>
+        </tr>
+        <tr>
+          <td>{{ rate }}</td>
+          <td>currency:'EUR'</td>
+          <td>{{ rate | currency:'EUR'}}</td>
+        </tr>
+        <tr>
+          <td>{{ rate }}</td>
+          <td>currency:'CAD':'symbol-narrow'</td>
+          <td>{{ rate | currency:'CAD':'symbol-narrow':'.0-2'}}</td>
+        </tr>
+        <tr>
+          <td>{{ time }}</td>
+          <td>async</td>
+          <td>{{ time | async }}</td>
+        </tr>
+        <tr>
+          <td>{{ today }}</td>
+          <td>date</td>
+          <td>{{ today | date }}</td>
+        </tr>
+        <tr>
+          <td>{{ today }}</td>
+          <td>date:'medium'</td>
+          <td>{{ today | date:'medium' }}</td>
+        </tr>
+        <tr>
+          <td>{{ today }}</td>
+          <td>date:'short'</td>
+          <td>{{ today | date:'short' }}</td>
+        </tr>
+        <tr>
+          <td>{{ today }}</td>
+          <td>date:'MMMM - dd - Y'</td>
+          <td>{{ today | date:'MMMM - dd - Y' }}</td>
+        </tr>
+        <tr>
+          <td>{{ userName }}</td>
+          <td>capitalize</td>
+          <td>{{ userName | capitalize:false }}</td>
+        </tr>
+        <tr>
+          <td>{{ userName }}</td>
+          <td>
+            safepassword <br />
+            <button
+              (click)="showPassword=!showPassword"
+              class="btn btn-danger btn-sm"
+            >
+              {{ showPassword ? 'Hide' : 'Show'}}
+            </button>
+          </td>
+          <td>{{ userName | safepassword:showPassword }}</td>
+        </tr>
+        <tr>
+          <td>{{ today }}</td>
+          <td>
+            date:'MMMM - dd - Y':'{{language}}'
+            <button
+              (click)="setLanguage('es')"
+              class="btn m-1 btn-sm btn-primary"
+            >
+              Español
+            </button>
+            <button
+              (click)="setLanguage('en')"
+              class="btn m-1 btn-sm btn-secondary"
+            >
+              English
+            </button>
+            <button (click)="setLanguage('fr')" class="btn m-1 btn-sm btn-info">
+              Francois
+            </button>
+          </td>
+          <td>{{ today | date:'MMMM - dd - Y':'':language }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Slice in array</h3>
+    <ul>
+      <li *ngFor="let number of numbers | slice:0:5">{{ number }}</li>
+    </ul>
+
+    <h3>JSON</h3>
+    <div class="col">
+      <pre>
+        {{ hero | json }}
+      </pre>
+    </div>
+
+    <h3>Safe DOM</h3>
+    <div class="col mb-5">
+      <iframe
+        width="560"
+        height="315"
+        [src]="videoURL | safedom"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      >
+      </iframe>
+    </div>
+  </div>
+</div>
